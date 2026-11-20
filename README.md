@@ -3,8 +3,12 @@
 ```powershell
 scoop bucket add easytopaste https://github.com/Nemet360/scoop-easytopaste
 scoop install easytopaste
-easytopaste send "the thing you were about to paste into Teams"
+easytopaste --text "the thing you were about to paste into Teams"
 ```
+
+> The secret can also be piped in: `"…" | easytopaste`. There is no `send`
+> subcommand — the first version of this README invented one, and every
+> copy-pasted first command failed with exit 2.
 
 Share a password, an API key or a note through a **one-time link**. Your
 terminal encrypts it before anything leaves (AES-256-GCM); the key travels in
