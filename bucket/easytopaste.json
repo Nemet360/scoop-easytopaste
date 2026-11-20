@@ -1,0 +1,36 @@
+{
+    "version": "0.1.1",
+    "description": "Share a password or API key through a one-time, client-encrypted link",
+    "homepage": "https://easytopaste.com/?utm_source=scoop&utm_medium=cli&utm_campaign=launch-2026-11",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://github.com/Nemet360/easytopaste-action/blob/main/LICENSE.md"
+    },
+    "depends": "nodejs",
+    "url": "https://registry.npmjs.org/easytopaste/-/easytopaste-0.1.1.tgz",
+    "hash": "635628a574cc1135428f1d30df50048cc59f7b0aaa5597672794da331fb2777a",
+    "extract_dir": "package",
+    "installer": {
+        "script": [
+            "# Scoop unpacks the npm tarball; node runs the entry point directly, so",
+            "# there is nothing to compile and no global npm install to undo.",
+            "$shim = Join-Path $dir 'easytopaste.cmd'",
+            "@(",
+            "  '@echo off',",
+            "  'rem EASYTOPASTE_CHANNEL is how a Scoop install is distinguishable on the',",
+            "  'rem service side: an install followed by a command produces no page view,',",
+            "  'rem so a link tag cannot measure it. Nothing else is sent.',",
+            "  'if \"%EASYTOPASTE_CHANNEL%\"==\"\" set EASYTOPASTE_CHANNEL=scoop',",
+            "  'node \"%~dp0bin\\easytopaste.js\" %*'",
+            ") | Set-Content -Encoding ASCII $shim"
+        ]
+    },
+    "bin": "easytopaste.cmd",
+    "checkver": {
+        "url": "https://registry.npmjs.org/easytopaste/latest",
+        "jsonpath": "$.version"
+    },
+    "autoupdate": {
+        "url": "https://registry.npmjs.org/easytopaste/-/easytopaste-$version.tgz"
+    }
+}
